@@ -14,7 +14,9 @@ class _HomeState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("Search Page"),
+      ),
       body: Container(
         alignment: Alignment.topCenter,
         child: Column(
