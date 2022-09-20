@@ -1,3 +1,4 @@
+import 'package:ass7/Login.dart';
 import 'package:flutter/material.dart';
 
 class Search extends StatefulWidget {
@@ -13,48 +14,39 @@ class _HomeState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: customSearchBar,
-          automaticallyImplyLeading: false,
-          actions: [
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  if (customIcon.icon == Icons.search) {
-                    customIcon = const Icon(Icons.cancel);
-                    customSearchBar = const ListTile(
-                      leading: Icon(
-                        Icons.search,
-                        color: Colors.white,
-                        size: 28,
-                      ),
-                      title: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'search url...',
-                          hintStyle: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontStyle: FontStyle.italic,
-                          ),
-                          border: InputBorder.none,
-                        ),
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                    );
-                  } else {
-                    customIcon = const Icon(Icons.search);
-                    customSearchBar = const Text('Search Here');
-                  }
-                });
-              },
-              icon: customIcon,
-            )
-          ]),
+      appBar: AppBar(),
       body: Container(
+        alignment: Alignment.topCenter,
         child: Column(
-          children: [],
+          children: [
+            Image(
+                image: NetworkImage(
+                    "https://www.clarin.eu/sites/default/files/styles/medium/public/icon-services-fcs.png?itok=seug9Hqn")),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                  suffixIcon: customIcon,
+                  hintText: 'Search url...',
+                  border: OutlineInputBorder(),
+                  labelText: 'Search Here'),
+            ),
+            SizedBox(
+              height: 70,
+            ),
+            ElevatedButton.icon(
+                onPressed: (() {
+                  setState(() {
+                    Navigator.pop(context,
+                        MaterialPageRoute(builder: (context) {
+                      return Login();
+                    }));
+                  });
+                }),
+                icon: Icon(Icons.logout_rounded),
+                label: Text("Log Out"))
+          ],
         ),
       ),
     );

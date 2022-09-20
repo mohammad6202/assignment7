@@ -16,9 +16,11 @@ class _LoginState extends State<Login> {
         title: Text("Login Page"),
       ),
       body: Center(
-        child: ListView(
+        child: SingleChildScrollView(
+            child: Column(
           children: [
             Image(
+                height: 250,
                 image: NetworkImage(
                     "https://play-lh.googleusercontent.com/5e7z5YCt7fplN4qndpYzpJjYmuzM2WSrfs35KxnEw-Ku1sClHRWHoIDSw3a3YS5WpGcI")),
             Divider(
@@ -38,7 +40,9 @@ class _LoginState extends State<Login> {
             TextField(
               controller: TextEditingController(),
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'User Name'),
+                  suffixIcon: Icon(Icons.account_circle_outlined),
+                  border: OutlineInputBorder(),
+                  labelText: 'User Name'),
             ),
             Divider(
               height: 5,
@@ -47,7 +51,9 @@ class _LoginState extends State<Login> {
               obscureText: true,
               controller: TextEditingController(),
               decoration: const InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Password'),
+                  suffixIcon: Icon(Icons.key),
+                  border: OutlineInputBorder(),
+                  labelText: 'Password'),
             ),
             TextButton(onPressed: () {}, child: Text("Forget Password")),
             ElevatedButton.icon(
@@ -65,7 +71,7 @@ class _LoginState extends State<Login> {
                   style: TextStyle(fontSize: 20),
                 ))
           ],
-        ),
+        )),
       ),
     );
   }
